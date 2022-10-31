@@ -1,24 +1,35 @@
-# README
+# ゴルフレ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+* フォロー機能によって、ゴルフ仲間を作ることができます。
+* チャット機能によって、フォロワー同士でゴルフトークを楽しむことができます。
+* 投稿機能によって、自分が回ったコースやスコアなどをフォロワーのタイムラインへと投稿できます。
+* スコア履歴によって、自分や他ユーザーの成長過程が確認できます。
+* スコアランキング機能によって、ゴルフ場ごとの自分のスコアを他ユーザーと競い合うことができます。
 
-Things you may want to cover:
+### サイトテーマ
+『ゴルフレ』とは、これからゴルフを始める方や最近始めた方、今以上にゴルファーの輪を広げたいという方をサポートする為の、ゴルファー専用のSNSサイトです。
 
-* Ruby version
+### テーマを選んだ理由
+コロナ禍や娯楽の多様化によって、ゴルファー人口が減少しており、興味はあっても1人では中々始めづらい現状があります。
+1人でラウンジを回るのはハードルが高く、やはり気の合う仲間達と一緒にプレーするのが楽しいかと思います。
+そこで、ゴルフを1人で始めるか迷っている方や、気の合うゴルフ仲間をもっと作りたいといった方のお力添えをしたく、制作に至りました。
 
-* System dependencies
+### ターゲットユーザ
+ゴルフをしている方、ゴルフに興味がある方
 
-* Configuration
+### 主な利用シーン
+『ゴルフ仲間を作りたい』、『ゴルフに興味あるが、何から始めたら良いか分からないため経験者の声が聞きたい』といった時に利用いただきたい。
 
-* Database creation
+## 設計書
 
-* Database initialization
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
+## 使用素材
 
-* Deployment instructions
-
-* ...
