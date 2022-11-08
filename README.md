@@ -23,12 +23,10 @@
 
 ## 設計書
 ### ER図
-[Googleドキュメントに移動します]
-(https://app.diagrams.net/#G1XydeYdflkdT5-I66F2CzrJnVBktVCgqA)
+[Googleドキュメントに移動します](https://app.diagrams.net/#G1XydeYdflkdT5-I66F2CzrJnVBktVCgqA)
 
 ### テーブル定義書
-[Googleドキュメントに移動します]
-(https://docs.google.com/spreadsheets/d/18QBjSuM7qN8YROtMfL615SxbPWVIyybmlb2rHWKcPGA/edit#gid=0)
+[Googleドキュメントに移動します](https://docs.google.com/spreadsheets/d/18QBjSuM7qN8YROtMfL615SxbPWVIyybmlb2rHWKcPGA/edit#gid=0)
 
 ## 開発環境
 - OS：Linux(CentOS)
