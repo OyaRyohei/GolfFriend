@@ -1,0 +1,2 @@
+class GolfSpot < ApplicationRecord
+end
