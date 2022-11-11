@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   end
 
   # エンドユーザー用
-  namespace :public do
+  # scope module: :public publicをpath名から消す
+  scope module: :public do
     get 'about' => "homes#about", as: 'about'
     
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
@@ -32,10 +33,27 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    
+      
+    get "users/mypage" => "users#show"
+    get "users/information/edit" => "users#edit"
+    patch "users/information" => "users#update"
+  
+    get "users/unsubscribe" => "users#unsubscribe"
+    patch "users/withdraw" => "users#withdraw"
+      
     get 'chat_message/:id' => 'chat_messages#show', as: 'chat_message'
     resources :chat_messages, only: [:create]
     
+    resources :chat_rooms, only: [:index]
+    
+    resources :rankings, only: [:show]
+    
+    resources :golf_spots, only: [:index, :show]
+    
+  end
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

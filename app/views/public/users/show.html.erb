@@ -1,0 +1,6 @@
+<!--ゲストユーザーの場合、編集ボタンを非表示-->
+<% if user.name != "guestuser" %>
+  <div class='row'>
+    <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+  </div>
+<% end %>
