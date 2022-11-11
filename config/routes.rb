@@ -16,11 +16,27 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :news, only: [:new, :show, :index, :create]
     resources :users, only: [:show, :index, :edit, :update]
-end
+  end
 
   # エンドユーザー用
   namespace :public do
-end
+    get 'about' => "homes#about", as: 'about'
+    
+    resources :posts, only: [:new, :index, :show, :create, :destroy] do
+      resource :likes, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+    end
+    
+    resources :users, only: [:index, :show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
+    
+    get 'chat_message/:id' => 'chat_messages#show', as: 'chat_message'
+    resources :chat_messages, only: [:create]
+    
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
