@@ -1,29 +1,70 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class='container'>
+  <div class="d-inline-block px-3 m-3" style="background-color: #eee;">
+    <h4 class="m-0">新規会員登録</h4>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <div>
+    <div class="d-inline-block mx-5 ">
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.label :"ユーザー名" %></td>
+              <td><%= f.text_field :name, placeholder: "ゴルフ君", style: "margin-left:40px;" %></td>
+            </tr>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+            <tr>
+              <td><%= f.label :"性別" %></td>
+              <td><%= f.label :gender, User.genders_i18n[:man], style: "margin-left:40px;" %>
+                  <%= f.radio_button :gender, User.genders.key(0), checked: "checked" %>
+                  <%= f.label :gender, User.genders_i18n[:woman] %>
+                  <%= f.radio_button :gender, User.genders.key(1) %>
+              </td>
+            </tr>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+            <tr>
+              <td><%= f.label :"年齢" %></td>
+              <td><%= f.text_field :age, style: "margin-left:40px;" %></td>
+            </tr>
 
-<%= render "public/shared/links" %>
+            <tr>
+              <td><%= f.label :"都道府県" %></td>
+              <td><%= f.text_field :area, style: "margin-left:40px;" %></td>
+            </tr>
+
+            <tr>
+              <td><%= f.label :"メールアドレス" %></td>
+              <td><%= f.text_field :email, placeholder: "address@golfre.com", style: "margin-left:40px;" %></td>
+            </tr>
+
+            <tr>
+              <td><%= f.label :"パスワード" %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> 文字以上)</em>
+                <% end %>
+              </td>
+              <td><%= f.password_field :password, autocomplete: "new-password", style: "margin-left:40px;" %></td>
+            </tr>
+
+            <tr>
+              <td><%= f.label :"パスワード(確認用)" %></td>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password", style: "margin-left:40px;" %></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td>
+                <div class="actions">
+                  <%= f.submit "新規登録",class:"btn btn-primary px-5 mt-4", style: "margin-left:40px;" %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+
+      <p class="d-inline-block px-3 mt-3" style="background-color: #eee;">既に登録済みの方</p>
+      <p><%= link_to "こちら", "/users/sign_in" %>からログインしてください。</p>
+    </div>
+  </div>
+</div>

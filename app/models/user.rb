@@ -31,6 +31,8 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 10 }, uniqueness: true
   
   validates :introduction, length: { maximum: 50 }
+  
+  enum gender: { man: 0, woman: 1}
          
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="d-inline-block px-3 m-3 mb-4 border border-dark rounded">
+    <h4 class="m-0"><strong>投稿フォーム</strong></h4>
+  </div>
+
+  <div class="row">
+    <div class="container text-center">
+      <%= form_with model: @book, local:true do |f| %>
+        <table class="form-group">
+          <tr>
+            <td><%= f.label :golf_spot, "ゴルフ場：", class:"m-0" %></td>
+            <td><%= f.text_field :golf_spot, class: "form-control border-dark", style:"width: 400px" %></td>
+            <td><%= f.label :score, "スコア：", class:"ml-5 mb-0" %></td>
+            <td><%= f.text_field :score, class: "form-control border-dark", style:"width: 60px" %></td>
+          </tr>
+        </table>
+        <div class="form-group">
+          <% f.label :body %>
+          <%= f.text_area :body, class: "form-control border-dark", style:"height: 200px"%>
+        </div>
+        <div class="form-group">
+          <% f.label :image %>
+          <%= f.file_field :post_image, class: "form-control-file user_image mt-3", accept: 'image/*' %>
+        </div>
+        <div class="form-group container text-center">
+        <%= f.submit "投稿する", class: "btn btn-lg btn-success", style:"font-weight:bold;" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
