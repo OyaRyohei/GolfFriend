@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="container text-center">
-      <%= form_with model: @book, local:true do |f| %>
+      <%= form_with model: @post, url: posts_path, local:true do |f| %>
         <table class="form-group">
           <tr>
             <td><%= f.label :golf_spot, "ゴルフ場：", class:"m-0" %></td>

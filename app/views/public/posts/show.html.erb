@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="d-inline-block px-3 m-3 mb-4 border border-dark rounded">
+    <h4 class="m-0"><strong>投稿詳細</strong></h4>
+  </div>
+
+  <div class="row">
+    <div class="container text-center">
+      <table class="form-group">
+        <tr>
+          <td>ゴルフ場：<strong><%= @post.golf_spot %></strong></td>
+          <td class="pl-5">スコア：<strong><%= @post.score %></strong></td>
+          <td class="pl-5">いいね</td>
+          <td class="pl-3">コメント数</td>
+          <td class="pl-3"><%= link_to "削除する", post_path, method: :delete %></td>
+        </tr>
+      </table>
+      <div class="text-left"><%= @post.body %></div>
+      <div class="text-right"><%= link_to "投稿一覧へ", posts_path %></div>
+    </div>
+  </div>
+</div>
