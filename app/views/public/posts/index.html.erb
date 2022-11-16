@@ -8,10 +8,10 @@
       <% @posts.each do |post| %>
         <table>
           <tr>
-            <td>ゴルフ場：<strong><%= post.golf_spot %></strong></td>
+            <td>ゴルフ場：<strong><%= post.golf_spot.name %></strong></td>
             <td class="pl-5">スコア：<strong><%= post.score %></strong></td>
             <td class="pl-5">いいね</td>
-            <td class="pl-3">コメント数</td>
+            <td class="pl-3"><%= link_to "#{post.comments.count}コメント", post_path(post.id) %></td>
           </tr>
         </table>
         <%= link_to post_path(post.id) do %>

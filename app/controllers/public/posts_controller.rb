@@ -2,14 +2,15 @@ class Public::PostsController < ApplicationController
   # ログインしていないと、閲覧できない
   before_action :authenticate_user!
 
-  # ログインユーザー以外は編集・削除できない
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  # ログインユーザー以外は削除できない
+  before_action :ensure_correct_user, only: [:destroy]
 
   # 投稿機能
   def new
     @post = Post.new
+    @golf_spots = GolfSpot.all
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -20,17 +21,17 @@ class Public::PostsController < ApplicationController
       render "index"
     end
   end
-  
+
   def index
     @posts = Post.all
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
     @user = @post.user
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -39,9 +40,13 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:body, :golf_spot, :score)
+    params.require(:post).permit(:body, :score, :golf_spot_id)
   end
-  
+
+  # def golf_spot_params
+    # params.require(:golf_spot).permit(:name)
+  # end
+
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user

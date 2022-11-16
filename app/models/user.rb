@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :liked_posts, through: :likes, source: :post
+  # has_many :liked_posts, through: :likes, source: :post
   
   # チャットルームとの関係
   has_many :chat_rooms, through: :chat_members, source: :chat_room
@@ -38,6 +38,36 @@ class User < ApplicationRecord
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
+    end
+  end
+  
+  # フォローしたときの処理
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  # フォローしているか判定
+  def following?(user)
+    followings.include?(user)
+  end
+  
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
     end
   end
 

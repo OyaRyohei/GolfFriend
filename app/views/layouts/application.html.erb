@@ -23,7 +23,7 @@
               <h5 class="ml-5">ようこそ、<%= current_user.name %>さん!</h5>
               <ul class="navbar-nav ml-auto">
                 <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "About", about_path, class: 'nav-link text-dark' %></li>
-                <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "マイページ", users_mypage_path, class: 'nav-link text-dark' %></li>
+                <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "マイページ", "/users/#{current_user.id}", class: 'nav-link text-dark' %></li>
                 <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "投稿する", new_post_path, class: 'nav-link text-dark' %></li>
                 <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "チャット一覧", chat_rooms_path, class: 'nav-link text-dark' %></li>
                 <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
@@ -51,16 +51,7 @@
             <div class="container justify-content-end pt-3">
               <div class="row">
                 <div class="col-ml-auto mr-4">
-                  <%= form_with url: posts_path, method: :get do |f| %>
-                    <div class="input-group">
-                      <%= f.text_field :word, placeholder: "PostSearch", class: "input-group-prepend" %>
-                        <span class="input-group-btn">
-                          <%= f.button :type => "submit" do %>
-                            <i class="fas fa-search"></i>
-                          <% end %>
-                        </span>
-                    </div>
-                  <% end %>
+                  <%= render 'public/searches/form' %>
                 </div>
               </div>
             </div>

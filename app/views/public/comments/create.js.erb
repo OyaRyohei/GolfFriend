@@ -1,0 +1,4 @@
+<!--id="new_comment"にをrenderで指定した部分テンプレートに更新-->
+$("#new_content").html("<%= j(render 'public/comments/comments_index', post: @post) %>");
+<!--フォームを送信したあとにフォームの値を空にします-->
+$("textarea").val('');

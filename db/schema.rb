@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(version: 2022_11_10_212913) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_id", null: false
-    t.string "body", null: false
+    t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "golf_spots", force: :cascade do |t|
-    t.integer "name", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 2022_11_10_212913) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "golf_spot_id"
     t.string "body", null: false
-    t.string "golf_spot"
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

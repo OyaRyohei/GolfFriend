@@ -6,15 +6,36 @@
   <div class="row">
     <div class="container text-center">
       <table class="form-group">
-        <tr>
-          <td>ゴルフ場：<strong><%= @post.golf_spot %></strong></td>
+        <tr id="post_<%= @post.id %>">
+          <!--if文でGolfSpotが入力されていたら表示を記述-->
+          <td>ゴルフ場：<strong><%= @post.golf_spot.name %></strong></td>
+          <!--if文でScoreが入力されていたら表示を記述-->
           <td class="pl-5">スコア：<strong><%= @post.score %></strong></td>
-          <td class="pl-5">いいね</td>
-          <td class="pl-3">コメント数</td>
+          <!--いいねボタン-->
+          <td class="like_btn">
+            <%= render 'public/likes/like_btn', post: @post %>
+          </td>
+          <!--コメント数-->
+          <td class="pl-3">
+            <p>コメント：<%= @post.comments.count %></p>
+          </td>
+          <!--if文で投稿ユーザー以外表示できなくする-->
           <td class="pl-3"><%= link_to "削除する", post_path, method: :delete %></td>
         </tr>
       </table>
+
       <div class="text-left"><%= @post.body %></div>
+
+      <!--コメント-->
+      <div id="new_content">
+        <%= render 'public/comments/comments_index', post: @post %>
+      </div>
+
+      <!--コメントフォーム-->
+      <div>
+        <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
+      </div>
+
       <div class="text-right"><%= link_to "投稿一覧へ", posts_path %></div>
     </div>
   </div>

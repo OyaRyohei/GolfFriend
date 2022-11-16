@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
   # scope module: :public publicをpath名から消す
   scope module: :public do
     get 'about' => "homes#about", as: 'about'
+    get 'search', to: 'searches#search'
 
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
       resource :likes, only: [:create, :destroy]
@@ -29,12 +34,14 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:index, :show, :edit, :update] do
+      member do
+        get :likes
+      end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
-    get "users/mypage" => "users#show"
     get "users/information/edit" => "users#edit"
     patch "users/information" => "users#update"
 
@@ -52,9 +59,7 @@ Rails.application.routes.draw do
 
   end
 
-  devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
-  end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
