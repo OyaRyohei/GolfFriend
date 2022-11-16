@@ -1,0 +1,5 @@
+<!--.messageを部分更新。appendメソッドで要素を追加-->
+$('#chat_list').append("<div id='message_<%=@chat_message.id%>'><p style='text-align: left;'><%= @chat_message.body %></p></div>");
+
+<!--チャット投稿後、フォームの値に前回の投稿内容が残らないようにする-->
+$('input[type=text]').val("")

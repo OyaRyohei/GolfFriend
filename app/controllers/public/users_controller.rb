@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
     @username = @user.name
     @posts = @user.posts
   end
-  
+
   def index
     @users = User.all
   end

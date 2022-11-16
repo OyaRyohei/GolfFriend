@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'chat_messages/show'
+  end
   # エンドユーザー用
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -26,7 +29,6 @@ Rails.application.routes.draw do
   # scope module: :public publicをpath名から消す
   scope module: :public do
     get 'about' => "homes#about", as: 'about'
-    get 'search', to: 'searches#search'
 
     resources :posts, only: [:new, :index, :show, :create, :destroy] do
       resource :likes, only: [:create, :destroy]
@@ -42,6 +44,8 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
+    resources :searches, only: :index
+
     get "users/information/edit" => "users#edit"
     patch "users/information" => "users#update"
 
@@ -51,7 +55,7 @@ Rails.application.routes.draw do
     get 'chat_message/:id' => 'chat_messages#show', as: 'chat_message'
     resources :chat_messages, only: [:create]
 
-    resources :chat_rooms, only: [:index]
+    resources :chat_rooms, only: [:show, :index]
 
     resources :rankings, only: [:show]
 
