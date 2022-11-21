@@ -13,10 +13,9 @@ class User < ApplicationRecord
   # has_many :liked_posts, through: :likes, source: :post
 
   # チャットルームとの関係
-  has_many :chat_rooms, through: :chat_members, source: :chat_room
-  has_many :chat_rooms, through: :chat_messages, source: :chat_room
+  has_many :chat_members
+  has_many :chat_rooms, through: :chat_members
   has_many :chat_messages, dependent: :destroy
-  has_many :chat_members, dependent: :destroy
 
   # フォローした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

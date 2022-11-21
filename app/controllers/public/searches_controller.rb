@@ -5,8 +5,10 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
-    else
+    elsif @range == "Post"
       @posts = Post.looks(params[:search], params[:word])
+    else
+      @golf_spots = GolfSpot.looks(params[:search], params[:word])
     end
   end
 
@@ -14,8 +16,10 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
-    else
+    elsif @range == "Post"
       @posts = Post.looks(params[:search], params[:word])
+    else
+      @golf_spots = GolfSpot.looks(params[:search], params[:word])
     end
   end
 end

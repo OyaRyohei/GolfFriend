@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
-    resources :news, only: [:new, :show, :index, :create]
     resources :users, only: [:show, :index, :edit, :update]
+    resources :news, only: [:new, :show, :index, :create]
   end
 
   # エンドユーザー用
@@ -44,7 +44,9 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
-    resources :searches, only: :index
+    resources :searches, only: [:index]
+
+    resources :golf_spot_searches, only: [:index, :show]
 
     get "users/information/edit" => "users#edit"
     patch "users/information" => "users#update"
@@ -55,15 +57,15 @@ Rails.application.routes.draw do
     get 'chat_message/:id' => 'chat_messages#show', as: 'chat_message'
     resources :chat_messages, only: [:create]
 
-    resources :chat_rooms, only: [:show, :index]
+    resources :chat_rooms, only: [:show, :index] do
+      resources :chat_messages, only: [:create]
+    end
 
     resources :rankings, only: [:show]
 
     resources :golf_spots, only: [:index, :show]
 
   end
-
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

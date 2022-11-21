@@ -1,0 +1,10 @@
+
+  <h3>チャット一覧</h3>
+  <% @chat_rooms.each do |chat_room| %>
+    <% chat_room.users.each do |user| %>
+     <% if user.id == current_user.id %>
+     <% else %>
+        <p><%= link_to "#{user.name}さんとのチャット", chat_room_path(chat_room.id) %></a></p>
+     <% end %>
+    <% end %>
+  <% end %>
