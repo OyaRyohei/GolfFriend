@@ -20,8 +20,7 @@
           <%= f.text_area :body, class: "form-control border-dark", style:"height: 200px"%>
         </div>
         <div class="form-group">
-          <% f.label :image %>
-          <%= f.file_field :post_image, class: "form-control-file user_image mt-3", accept: 'image/*' %>
+          <%= f.file_field :image, accept: "image/*" %>
         </div>
         <div class="form-group container text-center">
         <%= f.submit "投稿する", class: "btn btn-lg btn-success", style:"font-weight:bold;" %>

@@ -1,1 +1,63 @@
-<h1>top</h1>
+<div class="container">
+  <div class="d-inline-block px-3 m-3 mb-4 border border-dark rounded">
+    <h4 class="m-0"><strong>新着ユーザー</strong></h4>
+  </div>
+
+  <div class=" px-3 m-3 mb-4 border border-dark rounded", style="width:180px">
+    <h4 class="m-0"><strong>新着投稿</strong></h4>
+  </div>
+  <% @posts.each do |post| %>
+    <table class='table table-hover table-inverse'>
+
+      <tr>
+        <td>
+          <%= link_to user_path(post.user.id) do %>
+            <%= post.user.name %>
+          <% end %>
+        </td>
+        <td><%= post.user.gender_i18n %></td>
+        <td><%= post.user.age %>代</td>
+        <td><%= post.user.area %></td>
+        <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+
+      <tr>
+        <td>ゴルフ場：<strong>
+          <%= link_to ranking_path(post.golf_spot.id) do %>
+            <%= post.golf_spot.name %>
+          <% end %></strong>
+        </td>
+        <td>スコア：<strong><%= post.score %></strong></td>
+        <td class="like_btn"><%= render 'public/likes/like_btn', post: post %></td>
+        
+        <td>コメント：<%= post.comments.count %></td>
+      </tr>
+      
+      <tr>
+          <td><%= link_to post_path(post.id) do %><%= post.body %><% end %></td>
+          <td>
+            <% if post.image.attached? %>
+              <%= image_tag post.image, size: "80x80" %>
+            <% else %>
+              <%= "" %>
+            <% end %>
+          </td>
+      </tr>
+    </table>
+  <% end %>
+
+
+  <div class=" px-3 m-3 mb-4 border border-dark rounded", style="width:250px">
+    <h4 class="m-0"><strong>運営からのお知らせ</strong></h4>
+  </div>
+  <% @news.each do |news| %>
+    <table class='table table-hover table-inverse'>
+      <tr>
+        <td><%= news.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= news.list %></td>
+      </tr>
+      <tr><td><%=news.body %></td></tr>
+    </table>
+<% end %>
+  
+</div>

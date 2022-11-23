@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="d-inline-block px-3 m-3 mb-4 border border-dark rounded">
+    <h4 class="m-0"><strong>お知らせ一覧</strong></h4>
+  </div>
+
+  <div class="row">
+    <div class="container text-center">
+      <% @news.each do |news| %>
+        <table>
+          <tr>
+            <td><%= news.list %></td>
+            <td class="pl-5"><%= link_to news.title, admin_news_path(news) %></td>
+            <td class="pl-5"><%= news.created_at.to_s(:datetime_jp) %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>

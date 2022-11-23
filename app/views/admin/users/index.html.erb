@@ -9,6 +9,9 @@
         <tr>
           <th>ユーザーID</th>
           <th>ユーザー名</th>
+          <th>性別</th>
+          <th>年齢</th>
+          <th>都道府県</th>
           <th>メールアドレス</th>
           <th>ステータス</th>
         </tr>
@@ -23,6 +26,9 @@
                 <%= user.name %>
               <% end %>
             </td>
+            <td><%= user.gender_i18n %></td>
+            <td><%= user.age %>代</td>
+            <td><%= user.area %></td>
             <td><%= user.email %></td>
 
             <% if user.is_deleted == false %>

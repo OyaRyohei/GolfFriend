@@ -12,20 +12,27 @@
 
   <body>
     <!--ヘッダー-->
-    <header class="border-bottom", style="background-color: #dcdcdc">
-      <nav class="navbar navbar-expand-lg ">
+    <header class="sticky-top", style="background-color: #dcdcdc">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar" href="/"><h1><strong>GolfFriend</strong></h1></a>
+          <a class="navbar text-center" href="/"><h1 class="text-center"><strong>GolfFriend</strong></h1></a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse row" id="navbarNavDropdown">
+
 
             <!--エンドユーザー用ヘッダー-->
             <% if user_signed_in? %>
-              <h5 class="ml-5">ようこそ、<%= current_user.name %>さん!</h5>
+            <h5 class="mr-5">ようこそ、<%= current_user.name %>さん!</h5>
               <ul class="navbar-nav ml-auto">
                 <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "About", about_path, class: 'nav-link text-dark' %></li>
-                <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "マイページ", "/users/#{current_user.id}", class: 'nav-link text-dark' %></li>
-                <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "投稿する", new_post_path, class: 'nav-link text-dark' %></li>
-                <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "チャット一覧", chat_rooms_path, class: 'nav-link text-dark' %></li>
+                <% if current_user.name != "guestuser" %>
+                  <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "マイページ", "/users/#{current_user.id}", class: 'nav-link text-dark' %></li>
+                  <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "投稿する", new_post_path, class: 'nav-link text-dark' %></li>
+                  <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "チャット一覧", chat_rooms_path, class: 'nav-link text-dark' %></li>
+                <% end %>
                 <!--<li class ="rounded border border-dark mr-5 bg-light">%= link_to "ランキング", ranking_path, class: 'nav-link text-dark' %></li>-->
                 <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
               </ul>
@@ -56,25 +63,7 @@
                 </div>
               </div>
             </div>
-
-            <!--ユーザー検索フォーム-->
-            <div class="container justify-content-end pt-3">
-              <div class="row">
-                <div class="col-ml-auto mr-4">
-                  <%= form_with url: users_path, method: :get do |f| %>
-                    <div class="input-group">
-                      <%= f.text_field :word, placeholder: "UserSearch", class: "input-group-prepend" %>
-                        <span class="input-group-btn">
-                          <%= f.button :type => "submit" do %>
-                            <i class="fas fa-search"></i>
-                          <% end %>
-                        </span>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <!--検索フォームここまで-->
+            <!--検索フォームここまで-->
           </div>
         </div>
       </nav>

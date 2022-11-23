@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class='col-md-8'>
+      <div class="d-inline-block px-3 m-3" style="background-color: #eee;">
+        <h3 class="m-0">
+          <%= @user.name %>さんのユーザー情報編集
+        </h3>
+      </div>
+
+      <%= form_with model: @user, url: admin_user_path(@user), local:true, method: :patch do |f| %>
+      <table class="table table-borderless table-sm">
+        <div class="field">
+          <tr>
+            <td><%= f.label :"ユーザーID" %></td>
+            <td colspan='2' class="pl-5"><%= @user.id %></td>
+          </tr>
+        </div>
+        
+        <div class="field">
+          <tr>
+            <td><%= f.label :"性別" %></td>
+            <td><%= f.label :gender, User.genders_i18n[:man], style: "margin-left:40px;" %>
+                <%= f.radio_button :gender, User.genders.key(0) %>
+                <%= f.label :gender, User.genders_i18n[:woman] %>
+                <%= f.radio_button :gender, User.genders.key(1) %></td>
+          </tr>
+        </div>
+
+        <div class="field">
+          <tr>
+            <td><%= f.label :"年齢" %></td>
+            <td><%= f.select :age, {"10代": 10, "20代": 20, "30代": 30, "40代": 40, "50代": 50, "60代": 60, "70代": 70, "80代": 80 }, {}, style: "margin-left:40px;" %></td>
+          </tr>
+        </div>
+
+        <div class="field">
+          <tr>
+          <td><%= f.label :"都道府県" %></td>
+          <td><%= f.select :area, User.areas.keys, {}, style: "margin-left:40px;" %></td>
+          </tr>
+        </div>
+
+        <div class="field">
+          <tr>
+          <td><%= f.label :"メールアドレス" %></td>
+          <td><%= f.email_field :email, style: "margin-left:40px;",autocomplete: "email" %></td>
+          </tr>
+        </div>
+
+        <div class="actions">
+          <tr>
+          <td>会員ステータス</td>
+        　<td>
+          　<%= f.radio_button :is_deleted, false, style: "margin-left:40px;" %>
+            <%= f.label :is_deleted, "有効", value: :false %>
+            <%= f.radio_button :is_deleted, true %>
+          　<%= f.label :is_deleted, "退会", value: :true %>
+          </td>
+          </tr>
+        </div>
+      <div class="actions">
+        <tr>
+        <td><br><%= f.submit '変更を保持', class: 'btn btn-success' %></td></tr>
+      </div>
+    <% end %>
+  </table>

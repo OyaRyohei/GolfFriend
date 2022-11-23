@@ -40,7 +40,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:body, :score, :golf_spot_id)
+    params.require(:post).permit(:body, :score, :golf_spot_id, :image)
   end
 
   # def golf_spot_params

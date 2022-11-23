@@ -5,12 +5,14 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :golf_spot
 
+  has_one_attached :image
+
   validates :body, presence:true, length:{maximum:200}
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
-  
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

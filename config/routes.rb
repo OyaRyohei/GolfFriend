@@ -48,9 +48,6 @@ Rails.application.routes.draw do
 
     resources :golf_spot_searches, only: [:index, :show]
 
-    get "users/information/edit" => "users#edit"
-    patch "users/information" => "users#update"
-
     get "users/unsubscribe" => "users#unsubscribe"
     patch "users/withdraw" => "users#withdraw"
 

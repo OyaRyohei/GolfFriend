@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="d-inline-block px-3 m-3 mb-4 border border-dark rounded">
+    <h4 class="m-0"><strong>お知らせ投稿</strong></h4>
+  </div>
+
+  <div class="row">
+    <div class="container text-center">
+      <%= form_with model: @news, url: admin_news_index_path, local:true do |f| %>
+        <div class="form-group">
+          <label class="ml-5"><%= f.label :"重要" %>
+            <%= f.radio_button :list, News.lists.key(0), checked: "checked" %></label>
+          <label class="ml-5"><%= f.label :"障害" %>
+            <%= f.radio_button :list, News.lists.key(1) %></label>
+          <label class="ml-5"><%= f.label :"メンテナンス" %>
+            <%= f.radio_button :list, News.lists.key(2) %></label>
+          <label class="ml-5"><%= f.label :"アップデート" %>
+            <%= f.radio_button :list, News.lists.key(3) %></label>
+        </div>
+
+        <div class="form-group">
+          <label><%= f.label :"タイトル" %></label>
+          <label><%= f.text_field :title, class: "form-control border-dark", style:"width: 400px" %></label>
+        </div>
+        <div class="form-group">
+          <label><%= f.label :"本文" %></label>
+          <label><%= f.text_area :body, class: "form-control border-dark", style:"width: 500px"%></label>
+        </div>
+
+        <div class="form-group container text-center">
+        <%= f.submit "投稿する", class: "btn btn-lg btn-success", style:"font-weight:bold;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

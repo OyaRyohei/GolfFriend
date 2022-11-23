@@ -1,2 +1,0 @@
-class GolfSpotSearchesController < ApplicationController
-end
