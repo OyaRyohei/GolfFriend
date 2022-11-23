@@ -1,0 +1,39 @@
+<div class="container pt-5">
+  <div class="row">
+    <h3 style="background-color: #eee;">ゴルフ場一覧・追加</h3>
+  </div>
+  <div class="mt-5">
+    <%= form_with model: [:admin, @golf_spot], local: true do |f| %>
+    <div class ="row">
+      <div class="col-md-2 text-center">ゴルフ場名</div>
+        <div class="col-md-3">
+          <%= f.text_field :name, autocomplete: "name", class:"form-control", placeholder: 'ゴルフ場名' %>
+        </div>
+        <div>
+          <%= f.submit '新規登録', class: "btn btn-lg btn-success btn-inline ml-5" %>
+        </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ゴルフ場</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @golf_spots.each do |golf_spot| %>
+            <tr>
+              <td class=""><%= golf_spot.name %></td>
+              <td class="text-center"><%= link_to '   編集する  ', edit_admin_golf_spot_path(golf_spot.id), class: "btn btn-sm btn-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

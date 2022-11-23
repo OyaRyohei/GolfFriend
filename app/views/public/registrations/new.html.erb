@@ -21,15 +21,15 @@
                   <%= f.radio_button :gender, User.genders.key(1) %>
               </td>
             </tr>
-            
+
             <tr>
               <td><%= f.label :"年齢" %></td>
-             <td><%= f.select :age, {"10代": 10, "20代": 20, "30代": 30, "40代": 40, "50代": 50, "60代": 60, "70代": 70, "80代": 80 }, {}%></td>
+             <td><%= f.select :age, {"10代": 10, "20代": 20, "30代": 30, "40代": 40, "50代": 50, "60代": 60, "70代": 70, "80代": 80 }, {}, style: "margin-left:40px;" %></td>
             </tr>
 
             <tr>
               <td><%= f.label :"都道府県" %></td>
-              <td><%= f.select :area, User.areas.keys, {}%></td>
+              <td><%= f.select :area, User.areas.keys, {}, style: "margin-left:40px;" %></td>
             </tr>
 
             <tr>
@@ -52,10 +52,15 @@
             </tr>
 
             <tr>
+              <td><%= f.label :"プロフィール画像" %></td>
+              <td><%= f.file_field :profile_image, accept: "image/*", style: "margin-left:40px;" %></td>
+            </tr>
+
+            <tr>
               <td></td>
               <td>
                 <div class="actions">
-                  <%= f.submit "新規登録",class:"btn btn-primary px-5 mt-4", style: "margin-left:40px;" %>
+                  <%= f.submit "新規登録",class:"btn btn-success px-5 mt-4", style: "margin-left:40px;" %>
                 </div>
               </td>
             </tr>
@@ -63,7 +68,7 @@
         </table>
       <% end %>
 
-      <p class="d-inline-block px-3 mt-3" style="background-color: #eee;">既に登録済みの方</p>
+      <p class="d-inline-block px-3 mt-3 btn btn-primary">既に登録済みの方</p>
       <p><%= link_to "こちら", "/users/sign_in" %>からログインしてください。</p>
     </div>
   </div>

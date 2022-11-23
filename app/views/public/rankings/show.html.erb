@@ -7,14 +7,14 @@
     <h5>ゴルフ場：<%= @golf_spot.name %></h5>
   </div>
 
-  <table>
+  <table border="1" style="border-collapse: collapse">
     <tr>
       <th></th>
       <th>すべてのユーザー</th>
       <th>スコア</th>
     </tr>
     <% @ranked_posts.each.with_index(1) do |post, i| %>
-    <tr>
+    <tr class="text_center">
       <td><%= i %>位</td>
       <td><%= post.user.name %></td>
       <td><%= post.score %></td>
@@ -22,11 +22,19 @@
     <% end %>
   </table>
 
-  <div class='row'>
-    <h5>自分の順位</h5>
+  <div class='row mt-4'>
   </div>
-  <table>
-    <%= @rank %>
+  <table border="1" style="border-collapse: collapse">
+    <tr>
+      <th></th>
+      <th>自分の順位</th>
+      <th>スコア</th>
+    </tr>
+    <tr>
+      <td><%= @rank %>位</td>
+      <td><%= current_user.name %></td>
+      <td><%= @post.score %></td>
+    </tr>
     <!--  <tr>-->
     <!--    <td>%= i %>位</td>-->
     <!--    <td>%= current_user.name %></td>-->

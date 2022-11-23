@@ -17,14 +17,14 @@
           </td>
           <!--コメント数-->
           <td class="pl-3">
-            <p>コメント：<%= @post.comments.count %></p>
+            コメント：<%= @post.comments.count %>
           </td>
           <!--if文で投稿ユーザー以外表示できなくする-->
           <td class="pl-3"><%= link_to "削除する", post_path, method: :delete %></td>
         </tr>
       </table>
 
-      <div class="text-left"><%= @post.body %></div>
+      <div class="text-left mb-3"><%= @post.body %></div>
 
       <!--コメント-->
       <div id="new_content">

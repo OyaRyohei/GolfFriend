@@ -24,16 +24,16 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     if @user != current_user
       redirect_to root_path
     end
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
-      redirect_to users_path, notice: "保存いたしました。"
+      redirect_to user_path(@user), notice: "保存いたしました。"
     else
       render "edit"
     end
@@ -56,7 +56,7 @@ class Public::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :gender, :age, :area, :introduction, :profile_image)
+    params.require(:user).permit(:name, :gender, :age, :area, :introduction, :image)
   end
 
   def set_user

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:show, :index, :edit, :update]
     resources :news, only: [:new, :show, :index, :create]
+    resources :golf_spots, only: [:index, :create, :edit, :update]
   end
 
   # エンドユーザー用
