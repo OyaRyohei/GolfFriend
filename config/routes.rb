@@ -37,20 +37,28 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:index, :show, :edit, :update] do
+      # 基本の7種のアクション以外を定義する時にmember doやcollection doを利用する
       member do
         get :likes
+      end
+      collection do
+        get :unsubscribe
+        patch :withdraw
       end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+
+      # get "unsubscribe" => "users#unsubscribe"
+      # patch "withdraw" => "users#withdraw"
+      
     end
 
     resources :searches, only: [:index]
 
     resources :golf_spot_searches, only: [:index, :show]
 
-    get "users/unsubscribe" => "users#unsubscribe"
-    patch "users/withdraw" => "users#withdraw"
+
 
     get 'chat_message/:id' => 'chat_messages#show', as: 'chat_message'
     resources :chat_messages, only: [:create]

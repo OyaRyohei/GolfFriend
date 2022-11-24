@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h2>CHAT WITH <%= @partner.name %></h2>
+      <h2>チャット（<%= @partner.name %>）</h2>
 
-      <div id="chat_users">
-        <div id="current_user">
-        </div>
-        <div id="aite_user">
-        </div>
-      </div>
+      <!--<div id="chat_users">-->
+      <!--  <div id="current_user">-->
+      <!--  </div>-->
+      <!--  <div id="aite_user">-->
+      <!--  </div>-->
+      <!--</div>-->
 
       <div id="chat_list" class="table">
-        <%= render "chat_list", messages: @chat_messages, chat_room: @chat_room, partner: @partner %>
+        <%= render "public/chat_rooms/chat_list", messages: @chat_messages, chat_room: @chat_room, partner: @partner %>
       </div>
 
       <%= form_with model: [@chat_room, @chat_message], local: false do |f| %>

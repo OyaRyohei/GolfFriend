@@ -23,7 +23,8 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    # includes アソシエーションを繋いだテーブル同士を結合させる
+    @posts = Post.includes(:user).where(user: { is_deleted: false } )
   end
 
   def show

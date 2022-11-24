@@ -20,7 +20,9 @@
             コメント：<%= @post.comments.count %>
           </td>
           <!--if文で投稿ユーザー以外表示できなくする-->
+          <% if current_user == @user %>
           <td class="pl-3"><%= link_to "削除する", post_path, method: :delete %></td>
+          <% end %>
         </tr>
       </table>
 
@@ -32,9 +34,11 @@
       </div>
 
       <!--コメントフォーム-->
-      <div>
-        <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
-      </div>
+      <% if current_user != @user && current_user.name != "guestuser" %>
+        <div>
+          <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
+        </div>
+      <% end %>
 
       <div class="text-right"><%= link_to "投稿一覧へ", posts_path %></div>
     </div>

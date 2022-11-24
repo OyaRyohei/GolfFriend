@@ -6,14 +6,14 @@
   <div class=" px-3 m-3 mb-4 border border-dark rounded", style="width:180px">
     <h4 class="m-0"><strong>新着投稿</strong></h4>
   </div>
-  
+
   <%= render 'public/posts/index', posts: @posts %>
 
   <div class=" px-3 m-3 mb-4 border border-dark rounded", style="width:250px">
     <h4 class="m-0"><strong>運営からのお知らせ</strong></h4>
   </div>
   <% @news.each do |news| %>
-    <table class='table table-hover table-inverse'>
+    <table class='table table-borderless border-bottom'>
       <tr>
         <td><%= news.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= news.list %></td>

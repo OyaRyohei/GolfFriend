@@ -4,8 +4,8 @@ class Public::ChatMessagesController < ApplicationController
     @chat_message.chat_room_id = params[:chat_room_id]
     @chat_message.save
 
-    # @chat_room = ChatRoom.find(params[:id])
-    # @partner = @chat_room.users.where.not(id: current_user.id).first
+    @chat_room = ChatRoom.find(params[:chat_room_id])
+    @partner = @chat_room.users.where.not(id: current_user.id).first
   end
 
   private

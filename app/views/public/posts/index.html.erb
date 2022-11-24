@@ -8,6 +8,7 @@
       <% @posts.each do |post| %>
         <table>
           <tr>
+            <td><strong><%= post.user.name %></strong></td>
             <td>ゴルフ場：<strong><%= post.golf_spot.name %></strong></td>
             <td class="pl-5">スコア：<strong><%= post.score %></strong></td>
             <td class="pl-5">いいね</td>

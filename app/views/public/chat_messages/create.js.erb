@@ -1,4 +1,4 @@
 <!--.messageを部分更新。appendメソッドで要素を追加-->
-$('#chat_list').html("<%= j(render "public/chat_rooms/chat_list", messages: @chat_messages, chat_room: @chat_room, partner: @partner) %>");
+$("#chat_list").html("<%= j(render "public/chat_rooms/chat_list", messages: @chat_messages, chat_room: @chat_room, partner: @partner) %>");
 <!--チャット投稿後、フォームの値に前回の投稿内容が残らないようにする-->
-<!--$('input[type=text]').val("")-->
+$('input[type=text]').val("")
