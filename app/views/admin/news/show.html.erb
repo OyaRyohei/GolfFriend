@@ -13,5 +13,8 @@
           <td class="pl-5"><%= @news.created_at.to_s(:datetime_jp) %></td>
         </tr>
       </table>
+      <div class="form-group container text-center mt-5", style="font-weight:bold;">
+        <%= link_to "お知らせ一覧", admin_news_index_path %>
+      </div>
     </div>
   </div>

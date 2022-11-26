@@ -6,11 +6,11 @@
   <div class="row">
     <div class="container text-center">
       <% @news.each do |news| %>
-        <table>
+        <table class='table table-borderless border-bottom m-0'>
           <tr>
-            <td><%= news.list %></td>
-            <td class="pl-5"><%= link_to news.title, admin_news_path(news) %></td>
-            <td class="pl-5"><%= news.created_at.to_s(:datetime_jp) %></td>
+            <td width="100px" align="left"><%= news.list %></td>
+            <td width="300px" align="left"><%= link_to news.title, admin_news_path(news) %></td>
+            <td><%= news.created_at.to_s(:datetime_jp) %></td>
           </tr>
         </table>
       <% end %>

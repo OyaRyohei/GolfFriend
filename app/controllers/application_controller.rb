@@ -4,11 +4,19 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(resource)
-    root_path
+    if resource.is_a?(Admin)
+        admin_users_path
+    else
+        root_path
+    end
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    if resource == :admin
+        new_admin_session_path
+    else
+        root_path
+    end
   end
 
   def configure_permitted_parameters
