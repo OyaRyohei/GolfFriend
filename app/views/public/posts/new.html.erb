@@ -11,8 +11,10 @@
             <td><%= f.label :golf_spot, "ゴルフ場：", class:"m-0" %></td>
             <!--第一引数postモデルの値が入るカラム　第二引数はセレクトの選択肢　第３引数は第１引数で設定したidに　第４引数は選択肢に表示させるもの-->
             <td><%= f.collection_select :golf_spot_id, @golf_spots, :id, :name, class: "form-control border-dark", style:"width: 400px" %></td>
+            
             <td><%= f.label :score, "スコア：", class:"ml-5 mb-0" %></td>
             <td><%= f.text_field :score, class: "form-control border-dark", style:"width: 60px" %></td>
+
           </tr>
         </table>
         <div class="form-group">
