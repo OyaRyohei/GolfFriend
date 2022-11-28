@@ -12,5 +12,3 @@ class Public::RankingsController < ApplicationController
     end
   end
 end
-
-end
