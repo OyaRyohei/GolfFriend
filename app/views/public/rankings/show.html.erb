@@ -16,25 +16,29 @@
     <% @ranked_posts.each.with_index(1) do |post, i| %>
     <tr class="text_center">
       <td><%= i %>位</td>
-      <td><%= post.user.name %></td>
+      <td><%= link_to user_path(post.user.id) do %>
+        <%= post.user.name %>
+      <% end %></td>
       <td><%= post.score %></td>
     </tr>
     <% end %>
   </table>
 
-  <% if current_user.email != 'guest@example.com' %>
-    <div class='row mt-4'></div>
-    <table border="1" style="border-collapse: collapse">
-      <tr>
-        <th></th>
-        <th>自分の順位</th>
-        <th>スコア</th>
-      </tr>
-      <tr>
-        <td><%= @rank %>位</td>
-        <td><%= current_user.name %></td>
-        <td><%= @post.score %></td>
-      </tr>
-    </table>
+  <% if current_user.email != 'guest@example.com' && current_user.posts.present? %>
+    <% if @post %>
+      <div class='row mt-4'></div>
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <th></th>
+          <th>自分の順位</th>
+          <th>スコア</th>
+        </tr>
+        <tr>
+          <td><%= @rank %>位</td>
+          <td><%= current_user.name %></td>
+          <td><%= @post.score %></td>
+        </tr>
+      </table>
+    <% end %>
   <% end %>
 </div>
