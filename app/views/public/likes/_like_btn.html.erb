@@ -1,14 +1,18 @@
 <!--いいね機能-->
 <% if user_signed_in? %>
-  <% if post.liked_by?(current_user) %>
-    <!--remote:true 非同期となる-->
-    <%= link_to post_likes_path(post), method: :delete, remote:true, style: "color: red;" do %>
-      ♥<%= post.likes.count %>
+  <% if current_user.email != 'guest@example.com' %>
+    <% if post.liked_by?(current_user) %>
+      <!--remote:true 非同期となる-->
+      <%= link_to post_likes_path(post), method: :delete, remote:true, style: "color: red;" do %>
+        ♥<%= post.likes.count %>
+      <% end %>
+    <% else %>
+      <%= link_to post_likes_path(post), method: :post, remote:true do %>
+        ♡<%= post.likes.count %>
+      <% end %>
     <% end %>
   <% else %>
-    <%= link_to post_likes_path(post), method: :post, remote:true do %>
-      ♡<%= post.likes.count %>
-    <% end %>
+    ❤️<%= post.likes.count %>
   <% end %>
 <% else %>
   ❤️<%= post.likes.count %>

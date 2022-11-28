@@ -1,6 +1,43 @@
-<!--%= link_to image_tag( post.image.variant(resize: '100x100') ), post_path(post.id) %>-->
-<%= link_to post.user.name, user_path(post.user.id) %>
-<i class="fa fa-heart unlike-btn"></i>
-<%= post.likes.length %>
-<%= link_to post.body, post_path(post.id) %>
+<table class='table table-borderless border-bottom'>
+  <tr>
+    <td>
+      <% if post.user.image.attached? %>
+        <%= image_tag post.user.image, size: "70x70" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "70x70" %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to user_path(post.user.id) do %>
+        <%= post.user.name %>
+      <% end %>
+    </td>
+    <td><%= post.user.gender_i18n %></td>
+    <td><%= post.user.age %>代</td>
+    <td><%= post.user.area %></td>
+    <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+  </tr>
 
+  <tr id="post_<%= post.id %>">
+    <td>ゴルフ場：<strong>
+      <%= link_to ranking_path(post.golf_spot.id) do %>
+        <%= post.golf_spot.name %>
+      <% end %></strong>
+    </td>
+    <td>スコア：<strong><%= post.score %></strong></td>
+    <td class="like_btn"><%= render 'public/likes/like_btn', post: post %></td>
+
+    <td>コメント：<%= post.comments.count %></td>
+  </tr>
+
+  <tr>
+      <td><%= link_to post_path(post.id) do %><%= post.body %><% end %></td>
+      <td>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, size: "80x80" %>
+        <% else %>
+          <%= "" %>
+        <% end %>
+      </td>
+  </tr>
+</table>

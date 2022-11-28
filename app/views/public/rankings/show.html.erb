@@ -22,24 +22,19 @@
     <% end %>
   </table>
 
-  <div class='row mt-4'>
-  </div>
-  <table border="1" style="border-collapse: collapse">
-    <tr>
-      <th></th>
-      <th>自分の順位</th>
-      <th>スコア</th>
-    </tr>
-    <tr>
-      <td><%= @rank %>位</td>
-      <td><%= current_user.name %></td>
-      <td><%= @post.score %></td>
-    </tr>
-    <!--  <tr>-->
-    <!--    <td>%= i %>位</td>-->
-    <!--    <td>%= current_user.name %></td>-->
-    <!--    <td>%= post.score %></td>-->
-    <!--  </tr>-->
-    <!--% end %>-->
-  </table>
+  <% if current_user.email != 'guest@example.com' %>
+    <div class='row mt-4'></div>
+    <table border="1" style="border-collapse: collapse">
+      <tr>
+        <th></th>
+        <th>自分の順位</th>
+        <th>スコア</th>
+      </tr>
+      <tr>
+        <td><%= @rank %>位</td>
+        <td><%= current_user.name %></td>
+        <td><%= @post.score %></td>
+      </tr>
+    </table>
+  <% end %>
 </div>

@@ -1,33 +1,37 @@
-<h2>検索結果</h2>
-
-<table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
-  <% if @range == "User" %>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= link_to user.name, user_path(user) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% elsif @range == "Post" %>
-    <!--検索対象モデルがPostの時 -->
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.body %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-    <!--検索対象モデルがUser・Postでない時 -->
-    <tbody>
-      <% @golf_spots.each do |golf_spot| %>
-        <tr>
-          <td><%= golf_spot.name %></td>
-          <td><%= link_to "ランキングを見る", ranking_path(golf_spot) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+<div class="container">
+  <div class="d-inline-block px-3 m-3 mb-4 border border-dark rounded">
+    <h4 class="m-0"><strong>検索結果</strong></h4>
+  </div>
+  
+  <table class="table table-hover table-inverse">
+    <!--検索対象モデルがUserの時 -->
+    <% if @range == "User" %>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, user_path(user) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% elsif @range == "Post" %>
+      <!--検索対象モデルがPostの時 -->
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% else %>
+      <!--検索対象モデルがUser・Postでない時 -->
+      <tbody>
+        <% @golf_spots.each do |golf_spot| %>
+          <tr>
+            <td><%= golf_spot.name %></td>
+            <td><%= link_to "ランキングを見る", ranking_path(golf_spot) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>

@@ -1,14 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="d-inline-block px-3 m-3 mb-4 ">
       <h2>チャット（<%= @partner.name %>）</h2>
-
-      <!--<div id="chat_users">-->
-      <!--  <div id="current_user">-->
-      <!--  </div>-->
-      <!--  <div id="aite_user">-->
-      <!--  </div>-->
-      <!--</div>-->
+    </div>
 
       <div id="chat_list" class="table">
         <%= render "public/chat_rooms/chat_list", messages: @chat_messages, chat_room: @chat_room, partner: @partner %>

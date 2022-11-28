@@ -7,19 +7,29 @@
     <div class="container text-center">
       <table class="form-group">
         <tr id="post_<%= @post.id %>">
-          <!--if文でGolfSpotが入力されていたら表示を記述-->
+          <td class="pl-3">
+            <% if @post.user.image.attached? %>
+              <%= image_tag @post.user.image, size: "70x70" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "70x70" %>
+            <% end %>
+          </td>
+          <td class="pr-3">
+            <%= link_to user_path(@post.user.id) do %>
+              <%= @post.user.name %>
+            <% end %>
+          </td>
           <td>ゴルフ場：<strong><%= @post.golf_spot.name %></strong></td>
-          <!--if文でScoreが入力されていたら表示を記述-->
           <td class="pl-5">スコア：<strong><%= @post.score %></strong></td>
           <!--いいねボタン-->
-          <td class="like_btn">
+          <td class="like_btn pl-5">
             <%= render 'public/likes/like_btn', post: @post %>
           </td>
           <!--コメント数-->
           <td class="pl-3">
             コメント：<%= @post.comments.count %>
           </td>
-          <!--if文で投稿ユーザー以外表示できなくする-->
+
           <% if current_user == @user %>
           <td class="pl-3"><%= link_to "削除する", post_path, method: :delete %></td>
           <% end %>
@@ -34,8 +44,8 @@
       </div>
 
       <!--コメントフォーム-->
-      <% if current_user != @user && current_user.name != "guestuser" %>
-        <div>
+      <% if current_user != @user && current_user.email != 'guest@example.com' %>
+        <div class="mt-3">
           <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
         </div>
       <% end %>
