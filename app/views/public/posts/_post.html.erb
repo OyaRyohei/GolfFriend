@@ -24,7 +24,7 @@
         <%= post.golf_spot.name %>
       <% end %></strong>
     </td>
-    <td>スコア：<strong><%= post.score %></strong></td>
+    <td>スコア：<strong><%= post.golfscore %></strong></td>
     <td class="like_btn"><%= render 'public/likes/like_btn', post: post %></td>
 
     <td>コメント：<%= post.comments.count %></td>

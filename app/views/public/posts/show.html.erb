@@ -30,6 +30,7 @@
           <td class="pl-3">
             コメント：<%= @post.comments.count %>
           </td>
+          <td class="sentiment-score pl-3">本文の感情分析スコア[<%= @post.score %>]</td>
 
           <% if current_user == @user %>
           <td class="pl-3"><%= link_to "削除する", post_path, method: :delete %></td>

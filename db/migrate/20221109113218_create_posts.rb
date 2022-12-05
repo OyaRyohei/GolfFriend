@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :user_id     , null: false
       t.integer :golf_spot_id
       t.string  :body        , null: false
-      t.integer :score
+      t.integer :golfscore
 
       t.timestamps
     end

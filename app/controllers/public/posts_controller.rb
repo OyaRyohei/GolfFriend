@@ -14,6 +14,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.score = Language.get_data(post_params[:body])
     if @post.save
       redirect_to post_path(@post.id)
     else
@@ -41,12 +42,8 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:body, :score, :golf_spot_id, :image)
+    params.require(:post).permit(:body, :golfscore, :golf_spot_id, :image)
   end
-
-  # def golf_spot_params
-    # params.require(:golf_spot).permit(:name)
-  # end
 
   def ensure_correct_user
     @post = Post.find(params[:id])

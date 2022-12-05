@@ -19,7 +19,7 @@
       <td><%= link_to user_path(post.user.id) do %>
         <%= post.user.name %>
       <% end %></td>
-      <td><%= post.score %></td>
+      <td><%= post.golfscore %></td>
     </tr>
     <% end %>
   </table>
@@ -36,7 +36,7 @@
         <tr>
           <td><%= @rank %>位</td>
           <td><%= current_user.name %></td>
-          <td><%= @post.score %></td>
+          <td><%= @post.golfscore %></td>
         </tr>
       </table>
     <% end %>
