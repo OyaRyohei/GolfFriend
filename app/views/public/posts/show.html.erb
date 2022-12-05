@@ -21,7 +21,7 @@
           </td>
           <td>ゴルフ場：<strong><%= link_to ranking_path(@post.golf_spot.id) do %>
           <%= @post.golf_spot.name %><% end %></strong></td>
-          <td class="pl-5">スコア：<strong><%= @post.score %></strong></td>
+          <td class="pl-5">スコア：<strong><%= @post.golfscore %></strong></td>
           <!--いいねボタン-->
           <td class="like_btn pl-5">
             <%= render 'public/likes/like_btn', post: @post %>
