@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-inline-block px-3 m-3 mb-4 border border-dark rounded">
+  <div class="title d-inline-block px-3 m-3 mb-4 border border-dark rounded">
     <h4 class="m-0"><strong>投稿詳細</strong></h4>
   </div>
 
@@ -36,9 +36,20 @@
           <td class="pl-3"><%= link_to "削除する", post_path, method: :delete %></td>
           <% end %>
         </tr>
-      </table>
 
-      <div class="text-left mb-3"><%= @post.body %></div>
+        <tr>
+          <td width="100%"><%= @post.body %></td>
+        </tr>
+        <tr>
+          <td>
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, size: "80x80" %>
+            <% else %>
+              <%= "" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
       <!--コメント-->
       <div id="new_content">

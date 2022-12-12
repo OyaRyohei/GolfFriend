@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,10 +13,10 @@
 
   <body>
     <!--ヘッダー-->
-    <header class="sticky-top", style="background-color: #dcdcdc">
+    <header class="sticky-top", style="background-color: #D0F5E1">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar text-center" href="/"><h1 class="text-center"><strong>GolfFriend</strong></h1></a>
+          <a class="navbar text-center" href="/"><h2 class="text-center"><strong>GolfFriend</strong></h2></a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,6 @@
                   <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "投稿する", new_post_path, class: 'nav-link text-dark' %></li>
                   <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "チャット一覧", chat_rooms_path, class: 'nav-link text-dark' %></li>
                 <% end %>
-                <!--<li class ="rounded border border-dark mr-5 bg-light">%= link_to "ランキング", ranking_path, class: 'nav-link text-dark' %></li>-->
                 <li class ="rounded border border-dark mr-5 bg-light"><%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
               </ul>
 
@@ -72,13 +71,12 @@
     </header>
 
     <!--ヘッダーと被らないようにする-->
-    <body style="padding-bottom:4rem">
-    </body>
+    <body style="padding-bottom:4rem"></body>
 
     <%= yield %>
 
     <!--フッター-->
-    <footer class="fixed-bottom" style="background-color: #dcdcdc">
+    <footer class="fixed-bottom" style="background-color: #D0F5E1">
       <div style="padding: 5px;">
         <h6 class="text-dark text-center mr-3" id="footer_logo"><small>©GolfFriend</small></h6>
       </div>
