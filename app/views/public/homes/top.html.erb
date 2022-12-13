@@ -1,21 +1,33 @@
 <div class="container">
-  <div class="title px-3 m-3 mb-4 border border-dark rounded", style="width:130px">
-    <h4 class="m-0"><strong>新着投稿</strong></h4>
+  <div class='row'>
+    <div class='col-md-3 col-lg-2 mt-3'>
+      <!-- サイドバー -->
+      <%= render 'public/users/info', user: @user, chat_room: @chat_room %>
+
+      <!-- 運営からのお知らせ -->
+      <h4 class="title mt-4 px-1 border border-dark rounded", style="width:130px"><strong>運営からの<br>お知らせ</strong></h4>
+      <% @news.each do |news| %>
+        <table class='table table-borderless border-bottom'>
+          <tr>
+            <td class="p-0"><%= news.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td class="p-0"><%= news.list %></td>
+          </tr>
+          <tr>
+            <td class="p-0"><%=news.body %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+    <div class='col-md-8'>
+      <div class="title px-3 m-3 mb-4 border border-dark rounded", style="width:130px">
+        <h4 class="m-0"><strong>新着投稿</strong></h4>
+      </div>
+
+      <%= render 'public/posts/index', posts: @posts %>
+
+    </div>
   </div>
-
-  <%= render 'public/posts/index', posts: @posts %>
-
-  <div class="title px-3 m-3 mb-4 border border-dark rounded", style="width:250px">
-    <h4 class="m-0"><strong>運営からのお知らせ</strong></h4>
-  </div>
-  <% @news.each do |news| %>
-    <table class='table table-borderless border-bottom'>
-      <tr>
-        <td><%= news.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= news.list %></td>
-      </tr>
-      <tr><td><%=news.body %></td></tr>
-    </table>
-  <% end %>
-
 </div>

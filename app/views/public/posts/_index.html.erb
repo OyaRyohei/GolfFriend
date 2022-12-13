@@ -21,7 +21,7 @@
     </tr>
 
     <tr id="post_<%= post.id %>">
-      <td>ゴルフ場：<strong>
+      <td class="min-width">ゴルフ場：<strong>
         <%= link_to ranking_path(post.golf_spot.id) do %>
           <%= post.golf_spot.name %>
         <% end %></strong>
@@ -34,14 +34,14 @@
     </tr>
 
     <tr>
-        <td><%= link_to post_path(post.id) do %><%= post.body %><% end %></td>
-        <td>
-          <% if post.image.attached? %>
-            <%= image_tag post.image, size: "80x80" %>
-          <% else %>
-            <%= "" %>
-          <% end %>
-        </td>
+      <td class="min-width"><%= link_to post_path(post.id) do %><%= post.body %><% end %></td>
+      <td>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, size: "80x80" %>
+        <% else %>
+          <%= "" %>
+        <% end %>
+      </td>
     </tr>
   </table>
 <% end %>
