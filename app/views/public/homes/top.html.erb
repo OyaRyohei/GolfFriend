@@ -3,8 +3,10 @@
     <div class='col-md-3 col-lg-2 mt-3'>
 
       <% if user_signed_in? %>
-      <!-- サイドバー -->
-      <%= render 'public/users/info', user: @user, chat_room: @chat_room %>
+        <!-- サイドバー -->
+        <% if @user.name != "guestuser" %>
+          <%= render 'public/users/info', user: @user, chat_room: @chat_room %>
+        <% end %>
       <% end %>
 
       <!-- 運営からのお知らせ -->
