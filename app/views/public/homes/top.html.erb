@@ -1,8 +1,11 @@
 <div class="container">
   <div class='row'>
     <div class='col-md-3 col-lg-2 mt-3'>
+
+      <% if user_signed_in? %>
       <!-- サイドバー -->
       <%= render 'public/users/info', user: @user, chat_room: @chat_room %>
+      <% end %>
 
       <!-- 運営からのお知らせ -->
       <h4 class="title mt-4 px-1 border border-dark rounded", style="width:130px"><strong>運営からの<br>お知らせ</strong></h4>
