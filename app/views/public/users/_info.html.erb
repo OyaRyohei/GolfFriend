@@ -3,7 +3,7 @@
     <% if user.image.attached? %>
       <%= image_tag user.image, size: "100x100" %>
     <% else %>
-      <%= image_tag 'no_image', size: "100x100" %>
+      <%= image_tag asset_path('no_image.jpeg'), size: "100x100" %>
     <% end %>
   </tr>
   <tr>
