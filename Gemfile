@@ -66,6 +66,7 @@ gem "net-imap"
 gem 'devise'
 gem "enum_help"
 gem 'kaminari','~> 1.2.1'
+gem 'devise-i18n'
 
 # 画像投稿用gem
 gem "refile", require: "refile/rails", github: 'manfe/refile'

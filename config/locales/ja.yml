@@ -4,3 +4,14 @@ ja: # 日本語の設定を行う
       gender:
         man: "男性"
         woman: "女性"
+
+  activerecord:
+    attributes:
+    models:
+      user: ユーザー情報
+  errors:
+    messages:
+      not_saved:
+        one: エラーが発生したため %{resource} は保存されませんでした。
+        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+        

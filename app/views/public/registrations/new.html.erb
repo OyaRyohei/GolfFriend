@@ -5,6 +5,8 @@
 
   <div>
     <div class="d-inline-block mx-5 ">
+      <%= render "public/shared/error_messages", resource: resource %>
+
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <table>
           <tbody>

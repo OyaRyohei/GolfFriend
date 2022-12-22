@@ -5,7 +5,7 @@
       <% if user_signed_in? %>
         <!-- サイドバー -->
         <% if @user.name != "guestuser" %>
-          <%= render 'public/users/info', user: @user, chat_room: @chat_room %>
+          <%= render 'public/users/info', user: @user %>
         <% end %>
       <% end %>
 
