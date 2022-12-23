@@ -5,12 +5,13 @@ class Public::PostsController < ApplicationController
   # ログインユーザー以外は削除できない
   before_action :ensure_correct_user, only: [:destroy]
 
-  # 投稿機能
+  # 投稿画面
   def new
     @post = Post.new
     @golf_spots = GolfSpot.all
   end
 
+  # 投稿機能
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -19,8 +20,9 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post.id)
     else
-      @posts = Post.all
-      render "index"
+      # @posts = Post.all
+      @golf_spots = GolfSpot.all
+      render action: :new
     end
   end
 
