@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        body: 本文
+    models:
+      post: 投稿

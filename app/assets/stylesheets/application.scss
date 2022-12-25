@@ -20,11 +20,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
-h2, footer {
+h2, footer, ul {
   font-family: 'Caveat', cursive;
 }
 
 .title {
   background-color: #00736D;
   color: #ffffff;
+}
+
+.error_messages {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: red;
 }
