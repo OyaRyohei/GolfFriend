@@ -46,7 +46,10 @@
         <td>フォロー</td>
         <td><%= link_to @user.followings.count, user_followings_path(@user.id) %></td>
         <td>フォロワー</td>
-        <td><%= link_to @user.followers.count, user_followers_path(@user.id) %></td>
+        <td id="follow_count">
+          <%= render 'public/users/follow_count', user: @user %>
+          <%#= link_to @user.followers.count, user_followers_path(@user.id) %>
+        </td>
         <td><%= link_to "いいね一覧", likes_user_path(@user.id) %></td>
       </tr>
     </table>
